@@ -1,5 +1,6 @@
 import time
 from pages.login_page import LoginPage
+from pages.logout_page import LogoutPage
 
 
 def test_login(driver):
@@ -17,3 +18,9 @@ def test_login(driver):
     assert "Login Here" not in page_source, (
         "Login failed: still on the login screen after entering valid credentials"
     )
+
+    # Log out so subsequent tests start from the login screen
+    logout = LogoutPage(driver)
+    logout.open_menu()
+    logout.sign_out_user()
+    logout.confirm_logout_user()
