@@ -1,10 +1,6 @@
-import time
-
 import pytest
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
-
-from pages.login_page import LoginPage
 
 
 @pytest.fixture(scope="function")
@@ -26,10 +22,3 @@ def driver():
     yield driver
 
     driver.quit()
-
-
-@pytest.fixture(scope="function")
-def login_page(driver):
-    """Provide a LoginPage instance after waiting for the app to load."""
-    time.sleep(3)
-    return LoginPage(driver)
