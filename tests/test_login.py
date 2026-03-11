@@ -1,30 +1,22 @@
+import time
 from pages.login_page import LoginPage
-<<<<<<< Updated upstream
-=======
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from appium.webdriver.common.appiumby import AppiumBy
->>>>>>> Stashed changes
 
 
 def test_login(driver):
-    """Test that valid credentials log the user into the app."""
+    time.sleep(3)
 
+def test_login(driver):
     login = LoginPage(driver)
-
-    # perform login
     login.login("chris@example.com", "Test@123")
 
-    print("Login attempted, waiting for home screen...")
+    page_source = driver.page_source
+    assert "Login Here" not in page_source
 
-    # wait for something on the home screen
-    WebDriverWait(driver, 40).until(
-        EC.presence_of_element_located(
-            (AppiumBy.XPATH, "//*[contains(@text,'Home')]")
-        )
+    # Wait for navigation to complete
+    time.sleep(10)
+
+    # Verify we navigated away from the login screen
+    page_source = driver.page_source
+    assert "Login Here" not in page_source, (
+        "Login failed: still on the login screen after entering valid credentials"
     )
-<<<<<<< Updated upstream
-=======
-
-    print("Login successful.")
->>>>>>> Stashed changes
