@@ -5,7 +5,6 @@ from pages.login_page import LoginPage
 def test_login(driver):
     time.sleep(3)
 
-def test_login(driver):
     login = LoginPage(driver)
     login.login("chris@example.com", "Test@123")
 

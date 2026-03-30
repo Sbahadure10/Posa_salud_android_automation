@@ -3,7 +3,7 @@ from appium import webdriver
 from appium.options.android import UiAutomator2Options
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="session")
 def driver():
 
     options = UiAutomator2Options()
